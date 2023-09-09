@@ -1,126 +1,126 @@
-const questions = [
+const preguntas = [
     {
-        question: "¿Cuál es la rama de la filosofía que se ocupa de cuestiones fundamentales sobre la existencia, el ser y la realidad?",
-        options: ["Epistemología", "Metafísica", "Ética"],
-        correctAnswer: "Metafísica"
+        pregunta: "¿Cuál es la rama de la filosofía que se ocupa de cuestiones fundamentales sobre la existencia, el ser y la realidad?",
+        opciones: ["Epistemología", "Metafísica", "Ética"],
+        respuestaCorrecta: "Metafísica"
     },
     {
-        question: "¿Qué filósofo griego fue el discípulo de Sócrates y el maestro de Aristóteles?",
-        options: ["Platón","Epicuro","Heráclito"],
-        correctAnswer: "Platón"
+        pregunta: "¿Qué filósofo griego fue el discípulo de Sócrates y el maestro de Aristóteles?",
+        opciones: ["Platón","Epicuro","Heráclito"],
+        respuestaCorrecta: "Platón"
     },
     {
-        question: "El movimiento: es el paso del acto a la potencia en cuanto esta en:",
-        options: ["relacion a otro", "acto", "potencia"],
-        correctAnswer: "potencia"
+        pregunta: "El movimiento: es el paso del acto a la potencia en cuanto esta en:",
+        opciones: ["relacion a otro", "acto", "potencia"],
+        respuestaCorrecta: "potencia"
     },
     {
-        question: "¿Cuál es el concepto filosófico que se refiere a la creencia de que todo conocimiento se deriva de la experiencia sensorial?",
-        options: ["Empirismo", "Racionalismo", "Idealismo"],
-        correctAnswer: "Empirismo"
+        pregunta: "¿Cuál es el concepto filosófico que se refiere a la creencia de que todo conocimiento se deriva de la experiencia sensorial?",
+        opciones: ["Empirismo", "Racionalismo", "Idealismo"],
+        respuestaCorrecta: "Empirismo"
     },
     {
-        question: "¿Qué rama de la filosofía se enfoca en la naturaleza de la belleza y el arte?",
-        options: ["Ética", "Estética", "Lógica"],
-        correctAnswer: "Estética"
+        pregunta: "¿Qué rama de la filosofía se enfoca en la naturaleza de la belleza y el arte?",
+        opciones: ["Ética", "Estética", "Lógica"],
+        respuestaCorrecta: "Estética"
     },
     {
-        question: " ¿Qué filósofo presocrático afirmó que 'todo fluye' y que no podemos bañarnos dos veces en el mismo río?",
-        options: ["Parménides", "Anaximandro", "Heráclito"],
-        correctAnswer: "Heráclito"
+        pregunta: " ¿Qué filósofo presocrático afirmó que 'todo fluye' y que no podemos bañarnos dos veces en el mismo río?",
+        opciones: ["Parménides", "Anaximandro", "Heráclito"],
+        respuestaCorrecta: "Heráclito"
     },
     {
-        question: " ¿En filosofía, cuál es la definición de 'esencia'? ",
-        options: ["La existencia actual de un objeto", "Aquello que hace que una cosa sea lo que es y no otra cosa", "El estado de cambio constante en la realidad"],
-        correctAnswer: "Aquello que hace que una cosa sea lo que es y no otra cosa"
+        pregunta: " ¿En filosofía, cuál es la definición de 'esencia'? ",
+        opciones: ["La existencia actual de un objeto", "Aquello que hace que una cosa sea lo que es y no otra cosa", "El estado de cambio constante en la realidad"],
+        respuestaCorrecta: "Aquello que hace que una cosa sea lo que es y no otra cosa"
     },
     {
-        question: "¿Qué filósofo afirmó la famosa frase 'Cogito, ergo sum' (Pienso, luego existo)?",
-        options: ["Immanuel Kant", "René Descartes", "John Locke"],
-        correctAnswer: "René Descartes"
+        pregunta: "¿Qué filósofo afirmó la famosa frase 'Cogito, ergo sum' (Pienso, luego existo)?",
+        opciones: ["Immanuel Kant", "René Descartes", "John Locke"],
+        respuestaCorrecta: "René Descartes"
     },
     {
-        question: "¿Qué filósofo alemán es conocido por su obra 'Crítica de la razón pura' y su enfoque en la epistemología y la metafísica?",
-        options: ["Friedrich Nietzsche", "Immanuel Kant", "Jean-Paul Sartre"],
-        correctAnswer: "Immanuel Kant"
+        pregunta: "¿Qué filósofo alemán es conocido por su obra 'Crítica de la razón pura' y su enfoque en la epistemología y la metafísica?",
+        opciones: ["Friedrich Nietzsche", "Immanuel Kant", "Jean-Paul Sartre"],
+        respuestaCorrecta: "Immanuel Kant"
     },
     {
-        question: "¿cómo se definen los 'accidentes' en relación con la materia?",
-        options: ["Los accidentes son eventos fortuitos que no tienen relación con la materia.", "Los accidentes son propiedades o cualidades que pueden cambiar sin cambiar la sustancia o naturaleza de la materia.", "Los accidentes se refieren a cambios en la estructura fundamental de la materia."],
-        correctAnswer: "Los accidentes son propiedades o cualidades que pueden cambiar sin cambiar la sustancia o naturaleza de la materia."
+        pregunta: "¿Cómo se definen los 'accidentes' en relación con la materia?",
+        opciones: ["Los accidentes son eventos fortuitos que no tienen relación con la materia.", "Los accidentes son propiedades o cualidades que pueden cambiar sin cambiar la sustancia o naturaleza de la materia.", "Los accidentes se refieren a cambios en la estructura fundamental de la materia."],
+        respuestaCorrecta: "Los accidentes son propiedades o cualidades que pueden cambiar sin cambiar la sustancia o naturaleza de la materia."
     },
-    // Aquí se pueden agrega más preguntas...
+    // Aquí se pueden agregar más preguntas...
 ];
 
-let currentQuestionIndex = 0;
-let score = 0;
+let indicePreguntaActual = 0;
+let puntaje = 0;
 
-const questionElement = document.getElementById("question");
-const optionsElement = document.getElementById("options");
-const feedbackElement = document.getElementById("feedback");
-const scoreElement = document.getElementById("score");
-const restartButton = document.getElementById("restart-button");
+const elementoPregunta = document.getElementById("pregunta");
+const elementoOpciones = document.getElementById("opciones");
+const elementoRetroalimentacion = document.getElementById("retroalimentacion");
+const elementoPuntaje = document.getElementById("puntuacion");
+const elementoBotonReinicio = document.getElementById("boton-reinicio");
 
-function loadQuestion() {
-    const currentQuestion = questions[currentQuestionIndex];
-    questionElement.textContent = `Pregunta ${currentQuestionIndex + 1}: ${currentQuestion.question}`;
+function cargarPregunta() {
+    const preguntaActual = preguntas[indicePreguntaActual];
+    elementoPregunta.textContent = `Pregunta ${indicePreguntaActual + 1}: ${preguntaActual.pregunta}`;
 
-    optionsElement.innerHTML = "";
-    currentQuestion.options.forEach((option) => {
-        const button = document.createElement("button");
-        button.textContent = option;
-        button.classList.add("option");
-        button.addEventListener("click", checkAnswer);
-        optionsElement.appendChild(button);
+    elementoOpciones.innerHTML = "";
+    preguntaActual.opciones.forEach((opcion) => {
+        const boton = document.createElement("button");
+        boton.textContent = opcion;
+        boton.classList.add("opcion");
+        boton.addEventListener("click", verificarRespuesta);
+        elementoOpciones.appendChild(boton);
     });
 }
 
-function checkAnswer(event) {
-    const selectedAnswer = event.target.textContent;
-    const currentQuestion = questions[currentQuestionIndex];
+function verificarRespuesta(evento) {
+    const respuestaSeleccionada = evento.target.textContent;
+    const preguntaActual = preguntas[indicePreguntaActual];
 
-    if (selectedAnswer === currentQuestion.correctAnswer) {
-        score++;
-        feedbackElement.textContent = "¡Respuesta correcta!";
+    if (respuestaSeleccionada === preguntaActual.respuestaCorrecta) {
+        puntaje++;
+        elementoRetroalimentacion.textContent = "¡Respuesta correcta!";
         // Avanzar automáticamente a la siguiente pregunta después de 2 segundos si la respuesta es correcta
-        setTimeout(nextQuestion, 2000);
+        setTimeout(siguientePregunta, 2000);
     } else {
-        feedbackElement.textContent = `Respuesta incorrecta. La respuesta correcta es: ${currentQuestion.correctAnswer}`;
+        elementoRetroalimentacion.textContent = `Respuesta incorrecta. La respuesta correcta es: ${preguntaActual.respuestaCorrecta}`;
         // Avanzar automáticamente a la siguiente pregunta después de 5 segundos si la respuesta es incorrecta
-        setTimeout(nextQuestion, 5000);
+        setTimeout(siguientePregunta, 5000);
     }
 
-    scoreElement.textContent = `Puntuación: ${score}`;
+    elementoPuntaje.textContent = `Puntuación: ${puntaje}`;
 }
 
-function nextQuestion() {
-    currentQuestionIndex++;
+function siguientePregunta() {
+    indicePreguntaActual++;
 
-    if (currentQuestionIndex < questions.length) {
-        loadQuestion();
-        feedbackElement.textContent = "";
+    if (indicePreguntaActual < preguntas.length) {
+        cargarPregunta();
+        elementoRetroalimentacion.textContent = "";
     } else {
         // Juego terminado, muestra la puntuación final
-        questionElement.textContent = "Juego Terminado";
-        optionsElement.innerHTML = "";
-        feedbackElement.textContent = "";
-        scoreElement.textContent = `Puntuación final: ${score}`;
-        showRestartButton(); // Muestra el botón de reinicio
+        elementoPregunta.textContent = "Juego Terminado";
+        elementoOpciones.innerHTML = "";
+        elementoRetroalimentacion.textContent = "";
+        elementoPuntaje.textContent = `Puntuación final: ${puntaje}`;
+        mostrarBotonReinicio(); // Muestra el botón de reinicio
     }
 }
 
-function showRestartButton() {
-    restartButton.style.display = "block";
+function mostrarBotonReinicio() {
+    elementoBotonReinicio.style.display = "block";
 }
 
-function restartGame() {
-    currentQuestionIndex = 0;
-    score = 0;
-    loadQuestion();
-    scoreElement.textContent = `Puntuación: ${score}`;
-    feedbackElement.textContent = "";
-    restartButton.style.display = "none"; // Oculta el botón al reiniciar
+function reiniciarJuego() {
+    indicePreguntaActual = 0;
+    puntaje = 0;
+    cargarPregunta();
+    elementoPuntaje.textContent = `Puntuación: ${puntaje}`;
+    elementoRetroalimentacion.textContent = "";
+    elementoBotonReinicio.style.display = "none"; // Oculta el botón al reiniciar
 }
 
-loadQuestion();
-restartButton.addEventListener("click", restartGame);
+cargarPregunta();
+elementoBotonReinicio.addEventListener("click", reiniciarJuego);
