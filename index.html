@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego de Preguntas y Respuestas Filosóficas</title>
+    <title>Juego de Preguntas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="contenedor-pregunta">
-        <h1 id="pregunta">Pregunta 1: ¿Cuál es la rama de la filosofía que se ocupa de cuestiones fundamentales sobre la existencia, el ser y la realidad?</h1>
+        <h2 id="pregunta">Pregunta 1: ¿Cuál es la rama de la filosofía que se ocupa de cuestiones fundamentales sobre la existencia, el ser y la realidad?</h2>
         <div id="opciones">
-            <button class="opcion">Epistemología</button>
-            <button class="opcion">Metafísica</button>
-            <button class="opcion">Ética</button>
+            <!-- Opciones se generarán dinámicamente aquí -->
         </div>
+        <p id="retroalimentacion"></p>
         <p id="puntuacion">Puntuación: 0</p>
-        <div id="retroalimentacion"></div>
-        <button id="boton-reinicio" style="display:none;">Reiniciar Juego</button>
+        <button id="reiniciarJuego">Reiniciar Juego</button>
     </div>
     <script src="main.js"></script>
 </body>

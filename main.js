@@ -59,7 +59,31 @@ const elementoPregunta = document.getElementById("pregunta");
 const elementoOpciones = document.getElementById("opciones");
 const elementoRetroalimentacion = document.getElementById("retroalimentacion");
 const elementoPuntaje = document.getElementById("puntuacion");
-const elementoBotonReinicio = document.getElementById("boton-reinicio");
+const elementoBotonReinicio = document.getElementById("reiniciarJuego");
+
+function iniciarJuego() {
+    // Reinicia las variables de estado
+    indicePreguntaActual = 0;
+    puntaje = 0;
+
+    // Llama a la función para comenzar el juego después de reiniciar el puntaje
+    jugarJuego();
+}
+
+
+function jugarJuego() {
+    if (indicePreguntaActual < preguntas.length) {
+        cargarPregunta();
+        esperarRespuesta();
+    } else {
+        // Juego terminado, muestra la puntuación final
+        elementoPregunta.textContent = "Juego Terminado";
+        elementoOpciones.innerHTML = "";
+        elementoRetroalimentacion.textContent = "";
+        elementoPuntaje.textContent = `Puntuación final: ${puntaje}`;
+        mostrarBotonReinicio(); // Muestra el botón de reinicio
+    }
+}
 
 function cargarPregunta() {
     const preguntaActual = preguntas[indicePreguntaActual];
@@ -115,12 +139,15 @@ function mostrarBotonReinicio() {
 
 function reiniciarJuego() {
     indicePreguntaActual = 0;
-    puntaje = 0;
+    puntaje = 0; // Reiniciamos el puntaje a 0
+    elementoPuntaje.textContent = `Puntuación: ${puntaje}`; // Actualizamos el elemento HTML con el puntaje reiniciado
     cargarPregunta();
-    elementoPuntaje.textContent = `Puntuación: ${puntaje}`;
     elementoRetroalimentacion.textContent = "";
     elementoBotonReinicio.style.display = "none"; // Oculta el botón al reiniciar
 }
 
 cargarPregunta();
-elementoBotonReinicio.addEventListener("click", reiniciarJuego);
+elementoBotonReinicio.addEventListener("click", iniciarJuego);
+
+// Llama a la función para comenzar el juego
+iniciarJuego();

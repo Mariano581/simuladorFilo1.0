@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color:#eadbdbd5; /* Color de fondo */
+    background-color: #eadbdbd5; /* Color de fondo */
 }
 
 #contenedor-pregunta {
@@ -37,7 +37,7 @@ body {
 
 .opcion:hover {
     background-color: #2e2481; /* Color de fondo al pasar el mouse */
-    color: #C7FB93
+    color: #C7FB93;
 }
 
 #puntuacion {
@@ -52,8 +52,10 @@ body {
     font-size: 18px; /* Tamaño de fuente más grande para el feedback */
 }
 
-#boton-reinicio {
+#reiniciarJuego {
     margin-top: 20px; /* Espacio adicional arriba del botón de reinicio */
+    margin-left: auto; /* Centra horizontalmente el botón */
+    margin-right: auto; /* Centra horizontalmente el botón */
     padding: 10px 20px;
     font-size: 18px; /* Tamaño de fuente más grande para el botón de reinicio */
     background-color: #FFADAD;
@@ -64,7 +66,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#boton-reinicio:hover {
-    background-color: #2e2481;; /* Color de fondo al pasar el mouse sobre el botón de reinicio */
-    color: #C7FB93
+#reiniciarJuego:hover {
+    background-color: #2e2481; /* Color de fondo al pasar el mouse sobre el botón de reinicio */
+    color: #C7FB93;
 }
