@@ -52,102 +52,96 @@ const preguntas = [
     // Aquí se pueden agregar más preguntas...
 ];
 
+let preguntasIncorrectas = [];
 let indicePreguntaActual = 0;
 let puntaje = 0;
+let nombreEstudiante;
 
 const elementoPregunta = document.getElementById("pregunta");
 const elementoOpciones = document.getElementById("opciones");
 const elementoRetroalimentacion = document.getElementById("retroalimentacion");
 const elementoPuntaje = document.getElementById("puntuacion");
-const elementoBotonReinicio = document.getElementById("reiniciarJuego");
+const botonReiniciarFinal = document.getElementById("boton-reiniciar-final");
 
 function iniciarJuego() {
-    // Reinicia las variables de estado
+    if (!nombreEstudiante) {
+        nombreEstudiante = prompt("Por favor, ingresa tu nombre:");
+    }
     indicePreguntaActual = 0;
     puntaje = 0;
+    preguntasIncorrectas = [];
 
-    // Llama a la función para comenzar el juego después de reiniciar el puntaje
     jugarJuego();
 }
-
 
 function jugarJuego() {
     if (indicePreguntaActual < preguntas.length) {
         cargarPregunta();
-        esperarRespuesta();
     } else {
-        // Juego terminado, muestra la puntuación final
-        elementoPregunta.textContent = "Juego Terminado";
-        elementoOpciones.innerHTML = "";
-        elementoRetroalimentacion.textContent = "";
-        elementoPuntaje.textContent = `Puntuación final: ${puntaje}`;
-        mostrarBotonReinicio(); // Muestra el botón de reinicio
+        mostrarResultado();
     }
 }
 
 function cargarPregunta() {
     const preguntaActual = preguntas[indicePreguntaActual];
     elementoPregunta.textContent = `Pregunta ${indicePreguntaActual + 1}: ${preguntaActual.pregunta}`;
-
     elementoOpciones.innerHTML = "";
-    preguntaActual.opciones.forEach((opcion) => {
+
+    for (let i = 0; i < preguntaActual.opciones.length; i++) {
+        const opcion = preguntaActual.opciones[i];
         const boton = document.createElement("button");
         boton.textContent = opcion;
         boton.classList.add("opcion");
-        boton.addEventListener("click", verificarRespuesta);
+        boton.addEventListener("click", () => verificarRespuesta(opcion, preguntaActual.respuestaCorrecta));
         elementoOpciones.appendChild(boton);
-    });
+    }
 }
 
-function verificarRespuesta(evento) {
-    const respuestaSeleccionada = evento.target.textContent;
-    const preguntaActual = preguntas[indicePreguntaActual];
-
-    if (respuestaSeleccionada === preguntaActual.respuestaCorrecta) {
+function verificarRespuesta(respuestaSeleccionada, respuestaCorrecta) {
+    if (respuestaSeleccionada === respuestaCorrecta) {
         puntaje++;
         elementoRetroalimentacion.textContent = "¡Respuesta correcta!";
-        // Avanzar automáticamente a la siguiente pregunta después de 2 segundos si la respuesta es correcta
-        setTimeout(siguientePregunta, 2000);
     } else {
-        elementoRetroalimentacion.textContent = `Respuesta incorrecta. La respuesta correcta es: ${preguntaActual.respuestaCorrecta}`;
-        // Avanzar automáticamente a la siguiente pregunta después de 5 segundos si la respuesta es incorrecta
-        setTimeout(siguientePregunta, 5000);
+        preguntasIncorrectas.push(indicePreguntaActual);
+        elementoRetroalimentacion.textContent = `Respuesta incorrecta. La respuesta correcta es: ${respuestaCorrecta}`;
     }
 
-    elementoPuntaje.textContent = `Puntuación: ${puntaje}`;
-}
-
-function siguientePregunta() {
     indicePreguntaActual++;
+    setTimeout(jugarJuego, 2000);
+    elementoPuntaje.textContent = `Puntuación de ${nombreEstudiante}: ${puntaje}`;
+}
 
-    if (indicePreguntaActual < preguntas.length) {
-        cargarPregunta();
-        elementoRetroalimentacion.textContent = "";
+function mostrarResultado() {
+    elementoPregunta.textContent = "Juego Terminado";
+    elementoOpciones.innerHTML = "";
+    elementoRetroalimentacion.textContent = "";
+
+    if (preguntasIncorrectas.length > 0) {
+        mostrarPreguntasIncorrectas();
     } else {
-        // Juego terminado, muestra la puntuación final
-        elementoPregunta.textContent = "Juego Terminado";
-        elementoOpciones.innerHTML = "";
-        elementoRetroalimentacion.textContent = "";
-        elementoPuntaje.textContent = `Puntuación final: ${puntaje}`;
-        mostrarBotonReinicio(); // Muestra el botón de reinicio
+        elementoRetroalimentacion.textContent = `Puntuación final de ${nombreEstudiante}: ${puntaje}`;
+        botonReiniciarFinal.style.display = "block";
+        botonReiniciarFinal.addEventListener("click", iniciarJuego);
+        // Mostrar un alert al completar el juego
+        alert(`¡Felicidades, ${nombreEstudiante}! Has completado el juego.`);
     }
 }
 
-function mostrarBotonReinicio() {
-    elementoBotonReinicio.style.display = "block";
-}
-
-function reiniciarJuego() {
-    indicePreguntaActual = 0;
-    puntaje = 0; // Reiniciamos el puntaje a 0
-    elementoPuntaje.textContent = `Puntuación: ${puntaje}`; // Actualizamos el elemento HTML con el puntaje reiniciado
-    cargarPregunta();
+function mostrarPreguntasIncorrectas() {
+    elementoPregunta.textContent = "Preguntas Incorrectas";
+    elementoOpciones.innerHTML = "";
     elementoRetroalimentacion.textContent = "";
-    elementoBotonReinicio.style.display = "none"; // Oculta el botón al reiniciar
+
+    for (const indice of preguntasIncorrectas) {
+        const preguntaActual = preguntas[indice];
+        const preguntaElement = document.createElement("div");
+        preguntaElement.textContent = preguntaActual.pregunta;
+        elementoOpciones.appendChild(preguntaElement);
+    }
+
+    botonReiniciarFinal.style.display = "block";
+    botonReiniciarFinal.addEventListener("click", iniciarJuego);
 }
 
-cargarPregunta();
-elementoBotonReinicio.addEventListener("click", iniciarJuego);
-
-// Llama a la función para comenzar el juego
+// Iniciar el juego cuando se carga la página por primera vez
 iniciarJuego();

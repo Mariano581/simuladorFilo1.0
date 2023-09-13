@@ -52,7 +52,7 @@ body {
     font-size: 18px; /* Tamaño de fuente más grande para el feedback */
 }
 
-#reiniciarJuego {
+#boton-reiniciar-final {
     margin-top: 20px; /* Espacio adicional arriba del botón de reinicio */
     margin-left: auto; /* Centra horizontalmente el botón */
     margin-right: auto; /* Centra horizontalmente el botón */
@@ -66,7 +66,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#reiniciarJuego:hover {
+#boton-reiniciar-final:hover {
     background-color: #2e2481; /* Color de fondo al pasar el mouse sobre el botón de reinicio */
     color: #C7FB93;
 }
